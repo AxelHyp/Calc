@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
-    <script src="js.js"></script> 
+    <script src="js.js" defer></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
 </head>
 <body>
-    <div id="calcbody">
-        <div id="screen">Screen</div>
-        <div id="buttons">
-            <ul id="numpad">
+    <div class="calcbody">
+        <div class="screen"></div>
+        <div class="underscreen">
+            <ul class="numpad">
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>
@@ -23,12 +23,13 @@
                 <button>9</button>
                 <button>0</button>
             </ul>
-            <ul id="operators">
-                <button>+</button>
-                <button>-</button>
-                <button>*</button>
-                <button>/</button>
-                <button>=</button>
+            <ul class="operators">
+                <button class="clear">AC</button>
+                <button class="plus">+</button>
+                <button class="minus">-</button>
+                <button class="multiply">*</button>
+                <button class="divide">/</button>
+                <button class="eq">=</button>
             </ul>
         </div>
     </div>
