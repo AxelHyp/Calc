@@ -17,14 +17,19 @@ function operate (num1, num2, operator) {
     return Math.round(out*100)/100
 }
 
-let firstNum = 0
+let firstNum = ""
 let operation = ""
-let secondNum = 0
+let secondNum = ""
+let firstNumLock = false
 
 function whatToDo (event) {
     switch(event.target.className) {
         case "":
-            if (operation == "") {
+            if (operation == "" ) {
+                if (firstNumLock) {
+                    firstNum = ""
+                    firstNumLock = false
+                }
                 firstNum = parseInt(firstNum += event.target.innerText)
                 document.querySelector(".screen").innerHTML = firstNum
             }
@@ -34,12 +39,13 @@ function whatToDo (event) {
             }
             break;
         default:
-        if (secondNum == 0) {
-            operation = event.target.innerText 
+        if (secondNum === "") {
+            operation = event.target.innerText
+            firstNumLock = true
         }
         else {
             firstNum = operate(firstNum, secondNum, operation)
-            secondNum = 0
+            secondNum = ""
             operation = event.target.innerText
             document.querySelector(".screen").innerHTML = firstNum
         }
@@ -47,14 +53,15 @@ function whatToDo (event) {
 }
 
 function clear () {
-    firstNum = 0
-    secondNum = 0
+    firstNum = ""
+    firstNumLock = false
+    secondNum = ""
     operation = ""
     screen.innerHTML = ""
 }
 
 function equal () {
-    if (secondNum == "" && operation != "") {
+    if (secondNum === "" && operation != "") {
         secondNum = firstNum
     }
     else if (operation == "") {
@@ -63,7 +70,7 @@ function equal () {
 
     firstNum = operate(firstNum, secondNum, operation)
     operation = ""
-    secondNum = 0
+    secondNum = ""
     document.querySelector(".screen").innerHTML = firstNum
     
 }
